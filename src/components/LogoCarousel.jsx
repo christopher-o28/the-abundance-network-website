@@ -57,15 +57,20 @@ export default function LogoCarousel() {
         const normX = Math.max(-1.5, Math.min(1.5, (cardCenterX - containerCenterX) / maxDistance))
         const absNormX = Math.abs(normX)
 
-        // Clean & Compact 3D Arc Perspective (Middle cards slightly smaller, edge cards slightly larger)
-        const scale = Math.max(0.78, Math.min(1.12, 0.80 + Math.pow(absNormX, 1.3) * 0.32))
-        const rotateY = normX * 16
-        const translateZ = -50 + Math.pow(absNormX, 1.3) * 70
+        // 3D Arc Perspective: Center is largest (scale ~ 1.20), sides taper down to smaller (scale ~ 0.75)
+        const centerFactor = Math.max(0, 1 - Math.min(1, Math.pow(absNormX, 1.2)))
+        const scale = 0.75 + centerFactor * 0.45
+        const rotateY = -normX * 14
+        const translateZ = -40 + centerFactor * 60
         const rotateX = (1 - Math.min(1, absNormX)) * 1.5
+        const opacity = Math.max(0.6, 0.6 + centerFactor * 0.4)
+
+        card.style.zIndex = Math.round(centerFactor * 20)
 
         const innerCard = card.firstElementChild
         if (innerCard) {
           innerCard.style.transform = `perspective(1000px) rotateY(${rotateY.toFixed(2)}deg) rotateX(${rotateX.toFixed(2)}deg) translateZ(${translateZ.toFixed(2)}px) scale(${scale.toFixed(3)})`
+          innerCard.style.opacity = opacity.toFixed(2)
         }
       }
 
