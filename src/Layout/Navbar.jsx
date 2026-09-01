@@ -10,7 +10,7 @@ const LINKS = [
   { to: '/for-creators', label: 'For Creators' },
   { to: '/be-a-guest', label: 'Be a Guest' },
   { to: '/studio-rentals', label: 'Studio Rentals' },
-  { to: '/insider', label: 'The Abundance Network Insider' },
+  //{ to: '/insider', label: 'The Abundance Network Insider' },
 ]
 
 export default function Navbar() {
