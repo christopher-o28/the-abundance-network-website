@@ -68,7 +68,7 @@ export default function Home() {
 
       <Reveal as="section" className="mx-auto max-w-7xl px-5 sm:px-8 py-20 grid gap-12 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <SectionLabel>First core value</SectionLabel>
+          
           <h2 className="font-display text-3xl sm:text-4xl font-semibold leading-tight">
              To Empower and Serve Communities
           </h2>
@@ -82,7 +82,7 @@ export default function Home() {
 
       <Reveal as="section" className="mx-auto max-w-7xl px-5 sm:px-8 py-20 grid gap-12 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <SectionLabel>Second core value</SectionLabel>
+          
           <h2 className="font-display text-3xl sm:text-4xl font-semibold leading-tight">
              To Bridge Tradition and Innovation
           </h2>
@@ -96,7 +96,7 @@ export default function Home() {
 
       <Reveal as="section" className="mx-auto max-w-7xl px-5 sm:px-8 py-20 grid gap-12 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <SectionLabel>Third core value</SectionLabel>
+         
           <h2 className="font-display text-3xl sm:text-4xl font-semibold leading-tight">
              To Amplify Impactful Voices
           </h2>
@@ -110,7 +110,7 @@ export default function Home() {
 
       <Reveal as="section" className="mx-auto max-w-7xl px-5 sm:px-8 py-20 grid gap-12 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <SectionLabel>Fourth core value</SectionLabel>
+         
           <h2 className="font-display text-3xl sm:text-4xl font-semibold leading-tight">
              To Build a Legacy and Movement
           </h2>
