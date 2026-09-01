@@ -98,10 +98,10 @@ export default function LogoCarousel() {
       <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-32 lg:w-44 bg-gradient-to-l from-paper via-paper/80 to-transparent z-20" />
 
       {/* 3D Stage Container */}
-      <div className="w-full overflow-hidden py-4 sm:py-6" style={{ perspective: '1000px' }}>
+      <div className="w-full overflow-hidden py-6 sm:py-8" style={{ perspective: '1000px' }}>
         <div
           ref={trackRef}
-          className="flex items-center gap-4 sm:gap-5 w-max"
+          className="flex items-center gap-8 sm:gap-10 lg:gap-12 w-max"
           style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
         >
           {loopLogos.map((partner, i) => {
@@ -154,7 +154,7 @@ export default function LogoCarousel() {
             )
 
             return (
-              <div key={`${partnerName}-${i}`} className="relative shrink-0 hover:z-30">
+              <div key={`${partnerName}-${i}`} className="relative shrink-0 hover:z-30 px-1 sm:px-2">
                 {hasUrl ? (
                   <a
                     href={partnerUrl}
