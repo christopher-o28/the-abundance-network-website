@@ -48,6 +48,7 @@ export function useStudioRentals() {
           audioSetup: row.audioSetup || row.audio || '',
           videoSetup: row.videoSetup || row.video || '',
           extendedHours: row.extendedHours || row.extendedHoursRate || '',
+          additionalEquipment: row.additionalEquipment || row.equipment || row.equipmentForRent || row.additionalEquipmentForRent || row.rentalEquipment || row.addEquipment || '',
           image: row.image || row.imageUrl || row.coverImageUrl || row.photo || row.picture || '',
           category: row.category || row.type || '',
         }));

@@ -7,14 +7,25 @@ import Reveal from '../components/Reveal'
 import { LoadingState } from '../components/DataState'
 import { useStudioRentals } from '../hooks/useStudioRentals'
 
+const DEFAULT_ADDITIONAL_EQUIPMENT = `Cameras (Sony ZV-E10, Panasonic GH5s)
+Microphones, stands, lapel mics, Zoom recorder
+LED panels, Pavotubes, Forza lights
+Custom sets and props
+Internet access for live streaming`
+
 const DEFAULT_SPACES = [
   {
     id: '1',
     name: '1. The Main Studio',
     tagline: 'Best for: Roundtable discussions, panel shows, and multi-camera video podcasts.',
     desc: 'A flexible signature event space for live tapings, meetups, workshops, and branded experiences. Seats up to 40.',
-    rate: 'To Be Announced',
+    rate: `Audio + Video: 5,000 per hour (inclusion: 3 camera, 4 podcast mics, studio lights optional use of 55" TV)
+Audio only: 30% off (inclusion: 4 podcast mics)
+6 hours use | Audio + video: 24,000 (inclusions: 3 cam, 4 podcast mics, studio lights)
+Studio use only: 50% off (inclusions: Room use; IBM tables and chairs available upon request)
+*prices exclusive of 12% VAT`,
     capacity: 'Professional setup for 4 to 5 people.',
+    additionalEquipment: DEFAULT_ADDITIONAL_EQUIPMENT,
     audioSetup: '4 mics + headphones',
     videoSetup: '1 mirrorless cam + 4 mic audio',
     extendedHours: '+30%',
@@ -26,8 +37,11 @@ const DEFAULT_SPACES = [
     name: '2. The One-Person Studio',
     tagline: 'Best for: Solo hosts, remote interviews, and digital courses.',
     desc: "TPN's flagship space, powered by Spotify. Designed for large-format productions, fully equipped for professional audio and video.",
-    rate: 'To Be Announced',
-    capacity: '8–12 pax',
+    rate: `3,500 per hour (inclusions: 1 studio light, 1 camera, 1 lavalier mic)
+* 500 per tech staff (optional)
+* price exclusive of 12% VAT`,
+    capacity: 'Optimized for 1 person.',
+    additionalEquipment: DEFAULT_ADDITIONAL_EQUIPMENT,
     audioSetup: '2 mics + headphones',
     videoSetup: '1 mirrorless cam + 2 mic audio',
     extendedHours: '+30%',
@@ -39,8 +53,11 @@ const DEFAULT_SPACES = [
     name: '3. The Recording Booth',
     tagline: 'Best for: Voiceovers, narrations, and crystal-clear vocal isolation.',
     desc: 'Ideal for interviews, small panels, and two-host formats. Fully equipped for audio and video.',
-    rate: 'To Be Announced',
-    capacity: '4–6 pax',
+    rate: `3,500 per hour (inclusions: 2 recording microphones)
+* 500 per tech staff (optional)
+* price exclusive of 12% VAT`,
+    capacity: '1 person (Standing or Sitting).',
+    additionalEquipment: DEFAULT_ADDITIONAL_EQUIPMENT,
     audioSetup: '2 mics + headphones',
     videoSetup: '1 mirrorless cam + 2 mic audio',
     extendedHours: '+30%',
@@ -155,11 +172,11 @@ export default function StudioRentals() {
             {activeSpaces.map((s, i) => {
               const spaceImage = s.image || DEFAULT_SPACES[i % DEFAULT_SPACES.length]?.image
               return (
-                <Reveal key={s.name} delay={(i % 4) * 60} className="rounded-2xl border border-line bg-paper overflow-hidden flex flex-col transition-all duration-300 hover:border-ink hover:-translate-y-1 hover:shadow-lg hover:shadow-ink/5">
+                <Reveal key={s.name} delay={(i % 4) * 60} className="h-full rounded-2xl border border-line bg-paper overflow-hidden flex flex-col transition-all duration-300 hover:border-ink hover:-translate-y-1 hover:shadow-lg hover:shadow-ink/5">
                   {spaceImage && (
                     <div
                       onClick={() => setSelectedImage({ ...s, image: spaceImage })}
-                      className="group relative h-52 w-full overflow-hidden bg-ink/5 border-b border-line cursor-pointer"
+                      className="group relative h-52 w-full flex-shrink-0 overflow-hidden bg-ink/5 border-b border-line cursor-pointer"
                     >
                       <img
                         src={spaceImage}
@@ -175,17 +192,45 @@ export default function StudioRentals() {
                       </div>
                     </div>
                   )}
-                  <div className="p-6 flex flex-col flex-1">
-                    <h3 className="font-display text-xl font-semibold">{s.name}</h3>
-                    {s.tagline && <p className="mt-1 text-sm font-medium text-signal">{s.tagline}</p>}
-                    {s.desc && <p className="mt-3 text-sm text-ink/60 leading-relaxed flex-1">{s.desc}</p>}
-                    <div className="mt-4 pt-4 border-t border-line/70 space-y-1 text-sm">
-                      {s.rate && <p><span className="text-ink/50">Rate:</span> {s.rate}</p>}
-                      {s.capacity && <p><span className="text-ink/50">Capacity:</span> {s.capacity}</p>}
+                  <div className="p-6 flex flex-col flex-1 text-left items-start w-full">
+                    <h3 className="font-display text-xl font-semibold text-left">{s.name}</h3>
+                    {s.tagline && <p className="mt-1 text-sm font-medium text-signal text-left whitespace-pre-line">{s.tagline}</p>}
+                    {s.desc && <p className="mt-3 text-sm text-ink/60 leading-relaxed text-left whitespace-pre-line flex-1">{s.desc}</p>}
+                    <div className="mt-4 pt-4 border-t border-line/70 space-y-2 text-sm text-left w-full">
+                      {s.rate && (
+                        <div>
+                          <span className="text-ink/50 font-medium block mb-0.5">Rate:</span>
+                          <div className="text-ink text-left whitespace-pre-line leading-relaxed">{s.rate}</div>
+                        </div>
+                      )}
+                      {s.capacity && (
+                        <div>
+                          <span className="text-ink/50 font-medium block mb-0.5">Capacity:</span>
+                          <div className="text-ink text-left whitespace-pre-line leading-relaxed">{s.capacity}</div>
+                        </div>
+                      )}
+                      {s.additionalEquipment && (
+                        <div className="pt-2">
+                          <p className="font-semibold text-ink text-sm mb-2">
+                            Additional equipment for rent:
+                          </p>
+                          <ul className="space-y-1.5 text-sm text-ink/70 list-disc list-inside text-left leading-relaxed">
+                            {s.additionalEquipment
+                              .split('\n')
+                              .map((line) => line.trim())
+                              .filter(Boolean)
+                              .map((item, idx) => (
+                                <li key={idx}>
+                                  {item.replace(/^[\s•\*\-]+/, '')}
+                                </li>
+                              ))}
+                          </ul>
+                        </div>
+                      )}
                     </div>
                     <Button
                       variant="outline"
-                      className="mt-5 w-full"
+                      className="mt-auto pt-5 w-full uppercase tracking-wider font-semibold"
                       onClick={() => handleBookStudio(s.name)}
                     >
                       Book the studio
@@ -204,9 +249,9 @@ export default function StudioRentals() {
         <table className="w-full text-sm min-w-[640px]">
           <thead>
             <tr className="bg-paperdim">
-              <th className="text-left px-4 py-3 font-medium">Feature</th>
+              <th className="text-left align-top px-4 py-3 font-medium">Feature</th>
               {compareColumns.map((col) => (
-                <th key={col.name} className="text-left px-4 py-3 font-medium">
+                <th key={col.name} className="text-left align-top px-4 py-3 font-medium whitespace-pre-line">
                   {col.name}
                 </th>
               ))}
@@ -215,9 +260,9 @@ export default function StudioRentals() {
           <tbody>
             {COMPARE_ROWS.map((row) => (
               <tr key={row.key} className="border-t border-line">
-                <td className="px-4 py-3 font-medium text-ink/70">{row.label}</td>
+                <td className="px-4 py-3 font-medium text-ink/70 text-left align-top whitespace-pre-line">{row.label}</td>
                 {compareColumns.map((col) => (
-                  <td key={col.name} className="px-4 py-3 text-ink/60">
+                  <td key={col.name} className="px-4 py-3 text-ink/60 text-left align-top whitespace-pre-line leading-relaxed">
                     {col[row.key] || '—'}
                   </td>
                 ))}
@@ -263,26 +308,28 @@ export default function StudioRentals() {
                 className="w-full h-full object-contain max-h-[60vh]"
               />
             </div>
-            <div className="p-6 overflow-y-auto">
-              <span className="font-mono text-xs uppercase tracking-widest text-tape">
+            <div className="p-6 overflow-y-auto text-left">
+              <span className="font-mono text-xs uppercase tracking-widest text-tape text-left">
                 {selectedImage.capacity || 'Studio Space'}
               </span>
-              <h3 className="font-display text-2xl font-semibold mt-1">{selectedImage.name}</h3>
+              <h3 className="font-display text-2xl font-semibold mt-1 text-left">{selectedImage.name}</h3>
               {selectedImage.tagline && (
-                <p className="mt-1 text-sm font-medium text-signal">{selectedImage.tagline}</p>
+                <p className="mt-1 text-sm font-medium text-signal text-left whitespace-pre-line">{selectedImage.tagline}</p>
               )}
               {selectedImage.desc && (
-                <p className="mt-3 text-sm text-ink/70 leading-relaxed">{selectedImage.desc}</p>
+                <p className="mt-3 text-sm text-ink/70 leading-relaxed text-left whitespace-pre-line">{selectedImage.desc}</p>
               )}
-              <div className="mt-4 pt-4 border-t border-line flex flex-wrap gap-4 text-sm font-mono">
+              <div className="mt-4 pt-4 border-t border-line space-y-2 text-sm text-left">
                 {selectedImage.rate && (
                   <div>
-                    <span className="text-ink/40">Rate:</span> <span className="font-semibold text-ink">{selectedImage.rate}</span>
+                    <span className="text-ink/40 font-medium block mb-0.5">Rate:</span>
+                    <div className="text-ink text-left whitespace-pre-line leading-relaxed font-sans">{selectedImage.rate}</div>
                   </div>
                 )}
                 {selectedImage.capacity && (
                   <div>
-                    <span className="text-ink/40">Capacity:</span> <span className="font-semibold text-ink">{selectedImage.capacity}</span>
+                    <span className="text-ink/40 font-medium block mb-0.5">Capacity:</span>
+                    <div className="text-ink text-left whitespace-pre-line leading-relaxed font-sans">{selectedImage.capacity}</div>
                   </div>
                 )}
               </div>
