@@ -196,7 +196,7 @@ export default function StudioRentals() {
                     <h3 className="font-display text-xl font-semibold text-left">{s.name}</h3>
                     {s.tagline && <p className="mt-1 text-sm font-medium text-signal text-left whitespace-pre-line">{s.tagline}</p>}
                     {s.desc && <p className="mt-3 text-sm text-ink/60 leading-relaxed text-left whitespace-pre-line flex-1">{s.desc}</p>}
-                    <div className="mt-4 pt-4 border-t border-line/70 space-y-2 text-sm text-left w-full">
+                    <div className="mt-4 pt-4 border-t border-line/70 space-y-2 text-sm text-left w-full mb-6">
                       {s.rate && (
                         <div>
                           <span className="text-ink/50 font-medium block mb-0.5">Rate:</span>
@@ -230,7 +230,7 @@ export default function StudioRentals() {
                     </div>
                     <Button
                       variant="outline"
-                      className="mt-auto pt-5 w-full uppercase tracking-wider font-semibold"
+                      className="mt-auto pt-6 w-full uppercase tracking-wider font-semibold"
                       onClick={() => handleBookStudio(s.name)}
                     >
                       Book the studio
