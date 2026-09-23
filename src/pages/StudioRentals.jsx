@@ -199,19 +199,19 @@ export default function StudioRentals() {
                     <div className="mt-4 pt-4 border-t border-line/70 space-y-2 text-sm text-left w-full mb-6">
                       {s.rate && (
                         <div>
-                          <span className="text-ink/50 font-medium block mb-0.5">Rate:</span>
+                          <span className="text-ink font-bold text-base block mb-1">Rate:</span>
                           <div className="text-ink text-left whitespace-pre-line leading-relaxed">{s.rate}</div>
                         </div>
                       )}
                       {s.capacity && (
                         <div>
-                          <span className="text-ink/50 font-medium block mb-0.5">Capacity:</span>
+                          <span className="text-ink font-bold text-base block mb-1">Capacity:</span>
                           <div className="text-ink text-left whitespace-pre-line leading-relaxed">{s.capacity}</div>
                         </div>
                       )}
                       {s.additionalEquipment && (
                         <div className="pt-2">
-                          <p className="font-semibold text-ink text-sm mb-2">
+                          <p className="font-bold text-ink text-base mb-2">
                             Additional equipment for rent:
                           </p>
                           <ul className="space-y-1.5 text-sm text-ink/70 list-disc list-inside text-left leading-relaxed">
