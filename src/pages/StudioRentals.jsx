@@ -214,7 +214,7 @@ export default function StudioRentals() {
                           <p className="font-bold text-ink text-base mb-2">
                             Additional equipment for rent:
                           </p>
-                          <ul className="space-y-1.5 text-sm text-ink/70 list-disc list-inside text-left leading-relaxed">
+                          <ul className="space-y-1.5 text-sm text-ink font-normal list-disc list-inside text-left leading-relaxed">
                             {s.additionalEquipment
                               .split('\n')
                               .map((line) => line.trim())
@@ -228,13 +228,15 @@ export default function StudioRentals() {
                         </div>
                       )}
                     </div>
-                    <Button
-                      variant="outline"
-                      className="mt-auto pt-6 w-full uppercase tracking-wider font-semibold"
-                      onClick={() => handleBookStudio(s.name)}
-                    >
-                      Book the studio
-                    </Button>
+                    <div className="mt-auto pt-6 w-full">
+                      <Button
+                        variant="outline"
+                        className="w-full text-center justify-center items-center uppercase tracking-wider font-semibold"
+                        onClick={() => handleBookStudio(s.name)}
+                      >
+                        Book the studio
+                      </Button>
+                    </div>
                   </div>
                 </Reveal>
               )
