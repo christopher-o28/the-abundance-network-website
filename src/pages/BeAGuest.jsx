@@ -3,7 +3,7 @@ import SectionLabel from '../components/SectionLabel'
 import Reveal from '../components/Reveal'
 
 // Replace with your actual Tally form ID (e.g. 'NpxWpl')
-const BE_A_GUEST_FORM_ID = 'wdjq5o'
+const BE_A_GUEST_FORM_ID = '810Eqr'
 
 // Loads Tally's embed script once so the inline iframe below can render/resize itself
 function useTallyEmbedScript() {
@@ -30,16 +30,16 @@ export default function BeAGuest() {
         Join the Movement: Partner with The Abundance Network
       </h1>
       <p className="mt-5 text-ink/70 leading-relaxed">
-          Ready to Start Your Journey?
-          <br />
-          Step 1: The Presentation. Let’s walk you through how TAN can amplify your voice.
-          <br />
-          Step 2: Studio Tour. Visit our SVRTV facilities to see where your stories will come to life.
-          <br />
-          Step 3: Kick-off. Align on expectations and launch your season.
-          <br />
-          <br />
-          Contact Us To Join the Network
+        Ready to Start Your Journey?
+        <br />
+        Step 1: The Presentation. Let’s walk you through how TAN can amplify your voice.
+        <br />
+        Step 2: Studio Tour. Visit our SVRTV facilities to see where your stories will come to life.
+        <br />
+        Step 3: Kick-off. Align on expectations and launch your season.
+        <br />
+        <br />
+        Contact Us To Join the Network
       </p>
 
       <Reveal className="mt-10 rounded-2xl border border-line bg-paperdim p-6 sm:p-8">
