@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { Facebook, Instagram, Linkedin } from 'lucide-react'
+import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
 import Waveform from '../components/Waveform'
 
 export default function Footer() {
@@ -16,12 +16,18 @@ export default function Footer() {
             Philippines' most-listened-to Filipino podcasts.
           </p>
           <div className="mt-5 flex gap-3">
-            {[Facebook, Instagram, Linkedin].map((Icon, i) => (
+            {[
+              { Icon: Facebook, href: 'https://www.facebook.com/theabundancenetwork', label: 'Facebook' },
+              { Icon: Youtube, href: 'https://www.youtube.com/@TheAbundanceNetworkPH', label: 'Youtube' },
+             
+            ].map(({ Icon, href, label }) => (
               <a
-                key={i}
-                href="#"
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border border-paper/20 flex items-center justify-center hover:border-signal hover:text-signal transition-colors focus-ring"
-                aria-label="Social link"
+                aria-label={label}
               >
                 <Icon size={16} />
               </a>
@@ -43,7 +49,7 @@ export default function Footer() {
           <p className="font-mono text-xs uppercase tracking-widest text-paper/40 mb-4">Company</p>
           <ul className="space-y-2.5 text-sm">
             <li><NavLink to="/be-a-guest" className="hover:text-signal transition-colors">Be a Guest</NavLink></li>
-            <li><NavLink to="/insider" className="hover:text-signal transition-colors">TAN Insider</NavLink></li>
+            {/*<li><NavLink to="/insider" className="hover:text-signal transition-colors">TAN Insider</NavLink></li>*/}
             <li><a href="mailto:hello@theabundancenetwork.ph" className="hover:text-signal transition-colors">hello@theabundancenetwork.ph</a></li>
           </ul>
         </div>

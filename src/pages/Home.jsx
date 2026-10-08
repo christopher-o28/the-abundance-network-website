@@ -54,9 +54,8 @@ export default function Home() {
       {/* ABOUT */}
       <Reveal as="section" className="mx-auto max-w-7xl px-5 sm:px-8 py-20 grid gap-12 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <SectionLabel>Why the network exists</SectionLabel>
           <h2 className="font-display text-3xl sm:text-4xl font-semibold leading-tight">
-            Empowering Communities Through Values-Driven Content
+            To <span className="text-signal">Empower Communities</span> Through Values-Driven Content
           </h2>
         </div>
         <div className="lg:col-span-3 space-y-5 text-ink/70 leading-relaxed">
@@ -70,7 +69,7 @@ export default function Home() {
         <div className="lg:col-span-2">
           
           <h2 className="font-display text-3xl sm:text-4xl font-semibold leading-tight">
-             To Empower and Serve Communities
+             To <span className="text-signal">Empower</span> and Serve Communities
           </h2>
         </div>
         <div className="lg:col-span-3 space-y-5 text-ink/70 leading-relaxed">
@@ -84,7 +83,7 @@ export default function Home() {
         <div className="lg:col-span-2">
           
           <h2 className="font-display text-3xl sm:text-4xl font-semibold leading-tight">
-             To Bridge Tradition and Innovation
+             To <span className="text-signal">Bridge Tradition</span> and Innovation
           </h2>
         </div>
         <div className="lg:col-span-3 space-y-5 text-ink/70 leading-relaxed">
@@ -98,7 +97,7 @@ export default function Home() {
         <div className="lg:col-span-2">
          
           <h2 className="font-display text-3xl sm:text-4xl font-semibold leading-tight">
-             To Amplify Impactful Voices
+             To <span className="text-signal">Amplify Impactful</span> Voices
           </h2>
         </div>
         <div className="lg:col-span-3 space-y-5 text-ink/70 leading-relaxed">
@@ -112,7 +111,7 @@ export default function Home() {
         <div className="lg:col-span-2">
          
           <h2 className="font-display text-3xl sm:text-4xl font-semibold leading-tight">
-             To Build a Legacy and Movement
+             To <span className="text-signal"> Build</span> a Legacy and Movement
           </h2>
         </div>
         <div className="lg:col-span-3 space-y-5 text-ink/70 leading-relaxed">
