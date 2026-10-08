@@ -35,13 +35,13 @@ show a friendly "not connected yet" state until you wire up the sheet below.
 5. Create two tabs with these exact headers in row 1:
 
 **`Shows` tab**
-| id | title | host | category | description | streams | coverColor | coverImageUrl | audioEmbedUrl | episodeDate |
-|----|-------|------|----------|-------------|---------|------------|----------------|----------------|-------------|
+| id | title | host | category | description | streams | coverColor | coverImageUrl | audioEmbedUrl | episodeDate | introAudioUrl | youtubeUrl | facebookUrl | instagramUrl | appleUrl |
+|----|-------|------|----------|-------------|---------|------------|----------------|----------------|-------------|---------------|------------|-------------|--------------|----------|
 
-- `coverColor` is optional — use a hex like `#1F6F5C`, or leave blank to
-  auto-assign one of the brand accents.
-- `audioEmbedUrl` — link to the episode (Spotify, YouTube, etc.), used by
-  the play button.
+- `coverColor` is optional — use a hex like `#1F6F5C`, or leave blank to auto-assign one of the brand accents.
+- `audioEmbedUrl` or `spotifyUrl` — link to Spotify.
+- `introAudioUrl` — audio or MP3 URL for hover sound effects.
+- `youtubeUrl`, `facebookUrl`, `instagramUrl`, `appleUrl` — clickable social media links rendered on the show card.
 
 **`Blog` tab**
 | id | title | date | excerpt | image | link | category |

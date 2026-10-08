@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Facebook, Instagram, Youtube, Volume2 } from 'lucide-react'
+import { Facebook, Instagram, Youtube, Podcast, Volume2 } from 'lucide-react'
 import Waveform from './Waveform'
 import { playPodcastSound, stopPodcastSound } from '../lib/podcastAudio'
 
@@ -17,26 +17,45 @@ export default function ShowCard({ show, index = 0 }) {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false)
   const accent = show.coverColor || PALETTE[index % PALETTE.length]
 
+  const spotifyUrl =
+    show.spotifyUrl ||
+    show.spotify ||
+    show.spotify_url ||
+    (show.audioEmbedUrl && !show.audioEmbedUrl.includes('youtube') ? show.audioEmbedUrl : null)
+
+  const youtubeUrl =
+    show.youtubeUrl ||
+    show.youtube ||
+    show.youtube_url ||
+    (show.audioEmbedUrl && show.audioEmbedUrl.includes('youtube') ? show.audioEmbedUrl : null)
+
+  const facebookUrl =
+    show.facebookUrl ||
+    show.facebook ||
+    show.facebook_url ||
+    show.fbUrl ||
+    show.fb
+
+  const instagramUrl =
+    show.instagramUrl ||
+    show.instagram ||
+    show.instagram_url ||
+    show.igUrl ||
+    show.ig
+
+  const appleUrl =
+    show.appleUrl ||
+    show.applePodcastsUrl ||
+    show.apple ||
+    show.apple_podcasts
+
   const socialLinks = [
-    {
-      name: 'Spotify',
-      Icon: SpotifyIcon,
-      url: show.spotifyUrl || show.spotify || show.audioEmbedUrl,
-    },
-    {
-      name: 'YouTube',
-      Icon: Youtube,
-      url: show.youtubeUrl || show.youtube || 'https://www.youtube.com/@TheAbundanceNetworkPH',
-    },
-    {
-      name: 'Facebook',
-      Icon: Facebook,
-      url: show.facebookUrl || show.facebook || 'https://www.facebook.com/theabundancenetwork',
-    },
-    ...(show.instagramUrl || show.instagram
-      ? [{ name: 'Instagram', Icon: Instagram, url: show.instagramUrl || show.instagram }]
-      : []),
-  ].filter((item) => Boolean(item.url))
+    { name: 'Spotify', Icon: SpotifyIcon, url: spotifyUrl },
+    { name: 'YouTube', Icon: Youtube, url: youtubeUrl },
+    { name: 'Facebook', Icon: Facebook, url: facebookUrl },
+    { name: 'Instagram', Icon: Instagram, url: instagramUrl },
+    { name: 'Apple Podcasts', Icon: Podcast, url: appleUrl },
+  ].filter((item) => Boolean(item.url && String(item.url).trim()))
 
   const handleMouseEnter = () => {
     setIsPlayingAudio(true)
