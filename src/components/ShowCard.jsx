@@ -75,26 +75,30 @@ export default function ShowCard({ show, index = 0 }) {
 
   return (
     <article className="group flex flex-col h-full rounded-2xl border border-line bg-paper overflow-hidden transition-all duration-300 ease-out hover:border-ink hover:-translate-y-1 hover:shadow-lg hover:shadow-ink/5">
+      {/* Square cover */}
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className={`relative h-40 shrink-0 overflow-hidden cursor-pointer ${accent.startsWith('#') ? '' : accent} flex items-end p-5`}
+        className={`relative w-full aspect-square shrink-0 overflow-hidden cursor-pointer ${accent.startsWith('#') ? '' : accent}`}
         style={accent.startsWith('#') ? { backgroundColor: accent } : undefined}
       >
         {show.coverImageUrl ? (
           <img
             src={show.coverImageUrl}
             alt={show.title || 'Podcast cover'}
-            className="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform duration-500 ease-out group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
           />
         ) : null}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent pointer-events-none" />
-        <div className="relative z-10 flex items-center justify-between w-full">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-paper/90 drop-shadow-sm">
-            {show.category || ''}
-          </span>
-          <div className="flex items-center gap-1.5 bg-ink/40 backdrop-blur-sm px-2 py-1 rounded-full">
-            {isPlayingAudio && <Volume2 size={12} className="text-paper animate-pulse" />}
+
+        {/* Top-left pill */}
+        <span className="absolute top-3 left-3 z-10 rounded-full bg-ink/60 backdrop-blur-sm px-2.5 py-1 font-sans text-[11px] font-semibold leading-none text-paper">
+          {show.category || 'Show'}
+        </span>
+
+        {/* Bottom-right audio indicator (only while hover audio plays) */}
+        {isPlayingAudio && (
+          <div className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 bg-ink/50 backdrop-blur-sm px-2 py-1 rounded-full">
+            <Volume2 size={12} className="text-paper animate-pulse" />
             <Waveform
               bars={6}
               live={isPlayingAudio}
@@ -102,7 +106,7 @@ export default function ShowCard({ show, index = 0 }) {
               className="h-4 opacity-90"
             />
           </div>
-        </div>
+        )}
       </div>
 
       <div className="p-5 flex flex-col flex-1">
@@ -113,7 +117,13 @@ export default function ShowCard({ show, index = 0 }) {
         )}
 
         <div className="mt-auto flex items-center justify-between pt-4 border-t border-line/70 gap-3">
-          <div className="flex items-center gap-2">
+          {(show.streams || show.episodeDate) && (
+            <span className="text-xs font-mono text-ink/40 shrink-0">
+              {show.streams ? `${show.streams} streams` : show.episodeDate}
+            </span>
+          )}
+
+          <div className="flex items-center gap-2 ml-auto">
             {socialLinks.map(({ name, Icon, url }) => (
               <a
                 key={name}
@@ -128,12 +138,6 @@ export default function ShowCard({ show, index = 0 }) {
               </a>
             ))}
           </div>
-
-          {(show.streams || show.episodeDate) && (
-            <span className="text-xs font-mono text-ink/40 shrink-0">
-              {show.streams ? `${show.streams} streams` : show.episodeDate}
-            </span>
-          )}
         </div>
       </div>
     </article>

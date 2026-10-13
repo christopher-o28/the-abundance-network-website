@@ -37,8 +37,8 @@ export default function Home() {
             <span
               key={i}
               className={[
-                'flex-1 min-w-[2px] rounded-full origin-bottom bg-ink/90',
-                i % 5 === 0 ? 'bg-signal' : '',
+                'flex-1 min-w-[2px] rounded-full origin-bottom',
+                i % 5 === 0 ? 'bg-signal' : 'bg-ink/90',
                 ['animate-wave1', 'animate-wave2', 'animate-wave3', 'animate-wave4', 'animate-wave5'][i % 5],
               ].join(' ')}
               style={{ height: `${20 + ((i * 37) % 80)}%` }}

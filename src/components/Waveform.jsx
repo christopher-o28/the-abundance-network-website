@@ -6,7 +6,13 @@ const ANIMS = ['animate-wave1', 'animate-wave2', 'animate-wave3', 'animate-wave4
  * live: bars animate (used near the top of the page / active states)
  * static: bars render at fixed heights (used as section dividers, low-motion contexts)
  */
-export default function Waveform({ bars = 24, live = true, color = 'bg-ink', className = '' }) {
+export default function Waveform({
+  bars = 24,
+  live = true,
+  color = 'bg-ink/90',
+  accentColor = 'bg-white',
+  className = '',
+}) {
   return (
     <div className={`flex items-end gap-[3px] ${className}`} aria-hidden="true">
       {Array.from({ length: bars }).map((_, i) => (
@@ -14,7 +20,7 @@ export default function Waveform({ bars = 24, live = true, color = 'bg-ink', cla
           key={i}
           className={[
             'w-[3px] rounded-full origin-bottom',
-            color,
+            accentColor && i % 5 === 0 ? accentColor : color,
             HEIGHTS[i % HEIGHTS.length],
             live ? ANIMS[i % ANIMS.length] : '',
           ].join(' ')}
