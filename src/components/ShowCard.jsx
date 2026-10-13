@@ -90,11 +90,6 @@ export default function ShowCard({ show, index = 0 }) {
           />
         ) : null}
 
-        {/* Top-left pill */}
-        <span className="absolute top-3 left-3 z-10 rounded-full bg-ink/60 backdrop-blur-sm px-2.5 py-1 font-sans text-[11px] font-semibold leading-none text-paper">
-          {show.category || 'Show'}
-        </span>
-
         {/* Bottom-right audio indicator (only while hover audio plays) */}
         {isPlayingAudio && (
           <div className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 bg-ink/50 backdrop-blur-sm px-2 py-1 rounded-full">
